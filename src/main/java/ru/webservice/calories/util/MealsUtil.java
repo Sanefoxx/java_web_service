@@ -7,7 +7,11 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 public class MealsUtil {
     public static void main(String[] args) {
@@ -23,6 +27,20 @@ public class MealsUtil {
     }
 
     public static List<MealWithExceed> getFilteredWithExceeded(List<Meal> meals, LocalTime startTime, LocalTime endTime, int caloriesPerDay) {
-        return null;
+        Collection<List<Meal>> list = meals.stream()
+                .collect(Collectors.groupingBy(Meal::getDate)).values();
+
+        return list.stream().flatMap(dayMeals -> {
+            boolean exceed = dayMeals.stream().mapToInt(Meal::getCalories).sum() > caloriesPerDay;
+            return dayMeals.stream().filter(meal ->
+                    TimeUtil.isBetween(meal.getTime(), startTime, endTime))
+                    .map(meal -> createWithExceed(meal, exceed));
+
+        }).collect(toList());
+
+    }
+
+    public static MealWithExceed createWithExceed(Meal meal, boolean exceeded) {
+        return new MealWithExceed(meal.getDateTime(), meal.getDescription(), meal.getCalories(), exceeded);
     }
 }
