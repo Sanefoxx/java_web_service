@@ -1,6 +1,7 @@
-package ru.webservice.calories.repository;
+package ru.webservice.calories.repository.mock;
 
 import ru.webservice.calories.model.Meal;
+import ru.webservice.calories.repository.MealRepository;
 import ru.webservice.calories.util.MealsUtil;
 
 import java.util.Collection;

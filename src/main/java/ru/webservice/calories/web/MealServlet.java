@@ -3,8 +3,8 @@ package ru.webservice.calories.web;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.webservice.calories.model.Meal;
-import ru.webservice.calories.repository.InMemoryMealRepositoryImpl;
 import ru.webservice.calories.repository.MealRepository;
+import ru.webservice.calories.repository.mock.InMemoryMealRepositoryImpl;
 import ru.webservice.calories.util.MealsUtil;
 
 import javax.servlet.ServletException;
