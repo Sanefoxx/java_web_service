@@ -4,4 +4,7 @@
 
     <bean class="ru.webservice.calories.repository.mock.MockUserRepositoryImpl" id="mockUserRepository"/>
 
+    <bean class="ru.webservice.calories.service.UserServiceImpl">
+        <property name="repository" ref="mockUserRepository"/>
+    </bean>
 </beans>
