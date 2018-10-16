@@ -1,5 +1,7 @@
 package ru.webservice.calories.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.webservice.calories.model.User;
 import ru.webservice.calories.repository.UserRepository;
 import ru.webservice.calories.util.exception.NotFoundException;
@@ -9,13 +11,11 @@ import java.util.List;
 import static ru.webservice.calories.util.ValidationUtil.checkNotFound;
 import static ru.webservice.calories.util.ValidationUtil.checkNotFoundWithId;
 
+@Service
 public class UserServiceImpl implements UserService {
 
+    @Autowired
     private UserRepository repository;
-
-    public void setRepository(UserRepository repository) {
-        this.repository = repository;
-    }
 
     @Override
     public User create(User user) {

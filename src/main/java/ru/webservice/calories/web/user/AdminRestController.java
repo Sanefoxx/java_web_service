@@ -1,9 +1,11 @@
 package ru.webservice.calories.web.user;
 
+import org.springframework.stereotype.Controller;
 import ru.webservice.calories.model.User;
 
 import java.util.List;
 
+@Controller
 public class AdminRestController extends AbstractUserController {
 
     @Override

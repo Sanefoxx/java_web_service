@@ -1,9 +1,11 @@
 package ru.webservice.calories.web.user;
 
+import org.springframework.stereotype.Controller;
 import ru.webservice.calories.model.User;
 
 import static ru.webservice.calories.web.SecurityUtil.authUserId;
 
+@Controller
 public class ProfileRestController extends AbstractUserController {
 
     public User get() {
